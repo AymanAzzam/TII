@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hextris-deployment
+  labels:
+    app: hextris
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hextris
+  template:
+    metadata:
+      labels:
+        app: hextris
+    spec:
+      containers:
+      - name: hextris
+        image: aymanazzam63/hextris:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "250m"
