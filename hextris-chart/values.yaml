@@ -1,0 +1,28 @@
+replicaCount: 2
+
+image:
+  repository: aymanazzam63/hextris
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "100m"
+  limits:
+    memory: "256Mi"
+    cpu: "250m"
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: hextris.local
+      paths:
+        - path: /
+          pathType: Prefix
+  annotations: {}

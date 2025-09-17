@@ -55,3 +55,19 @@ kubectl patch svc ingress-nginx-controller -n ingress-nginx -p '{"spec": {"type"
 minikube tunnel
 ```
 9. Access the app on http://hextris.local
+
+## Helm Chart
+1. Install the helm chart
+```
+helm install hextris ./hextris-chart
+```
+2. Update hosts to point hextris.local to Ingress-nginx EXTERNAL-IP (/etc/hosts for linux, C:\Windows\System32\drivers\etc\hosts for windows)
+```
+kubectl get svc -n ingress-nginx
+<Ingress-nginx-EXTERNAL-IP> hextris.local
+```
+3. Create a network route between local machine and minikube so can reach the ingress controller.
+```
+minikube tunnel
+```
+4. Access the app on http://hextris.local
