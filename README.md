@@ -86,3 +86,11 @@ kubectl create secret docker-registry regcred \
   --docker-email=you@example.com \
   -n default
 ```
+3. Create Docker Hub Credentials in Jenkins secrets with the name *dockerhub-cred*
+```
+In Jenkins UI: Manage Jenkins → Credentials → System → Global → Add Credentials → Username with password
+```
+4. Create K8s cluster kubeconfig in Jenkins secrets with the name *kubeconfig-cred*
+```
+In Jenkins UI: Manage Jenkins → Credentials → System → Global → Add Credentials
+```
