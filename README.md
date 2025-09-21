@@ -71,3 +71,18 @@ kubectl get svc -n ingress-nginx
 minikube tunnel
 ```
 4. Access the app on http://hextris.local
+
+## Jenkins
+1. Create a Jenkins service account + RBAC in the cluster
+```
+kubectl apply -f jenkins/jenkins-sa.yaml
+```
+2. Create a registry secret for Docker Hub with replacing YOUR_DOCKER_USER and YOUR_DOCKER_PASS
+```
+kubectl create secret docker-registry regcred \
+  --docker-server=https://index.docker.io/v1/ \
+  --docker-username=YOUR_DOCKER_USER \
+  --docker-password=YOUR_DOCKER_PASS \
+  --docker-email=you@example.com \
+  -n default
+```
